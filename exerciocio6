@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define TAM 16 
+
+void SelectSort(int *Vetor); // Declara a função select sort;
+
+int main(){
+  int i, vetAux;
+  int vt[] = {3, 4, 9, 2, 5, 8, 2, 1, 7, 4, 6, 2, 9, 8, 5, 1};
+
+  
+  printf("\n");
+  printf("Valores do VETOR ORIGINAL:\n"); 
+
+  for(vetAux = 0; vetAux < TAM; vetAux++){
+    printf("%d, ", vt[vetAux]);
+  }
+
+  printf("\n");
+  SelectSort(vt);
+
+  printf("\n");
+  printf("Valores ORDENADOS do VETOR:\n");
+  
+  for (vetAux=0; vetAux < TAM; vetAux++){
+        printf(" %d,",vt[vetAux]);
+    }
+
+  printf("\n\n");
+  
+  return 0;
+}
+
+void SelectSort(int *Vetor)
+{
+    int Menor;
+    int Aux;
+    int Temp;
+    int Troca;
+
+    for(Aux = 0; Aux < TAM-1; Aux++){
+        Menor = Aux;
+        for (Temp = Aux + 1; Temp < TAM; Temp++){
+            if (Vetor[Temp] < Vetor[Menor]){
+                Menor = Temp; 
+            }
+        }
+
+        if (Menor != Aux){
+            Troca = Vetor[Aux];
+            Vetor[Aux] = Vetor[Menor];
+            Vetor[Menor] = Troca;
+        }
+    }
+}
